@@ -6,6 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+
 @Entity
 @Table
 public class Card {
@@ -16,6 +20,7 @@ public class Card {
     String lastname;
     String illness;
     Integer priority;
+    Timestamp arrivalTime;
 
     // default constructor
     public Card(){}
@@ -64,5 +69,9 @@ public class Card {
 
     public void setPriority(Integer priority) {
         this.priority = priority;
+    }
+
+    public Timestamp getArrivalTime() {
+        return arrivalTime;
     }
 }

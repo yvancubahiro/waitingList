@@ -2,8 +2,10 @@ package com.waitingList.waitingList;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Timestamp;
 
 @RestController
 @RequestMapping("card")
@@ -16,8 +18,9 @@ public class Controller {
     }
 
     @PostMapping
-    public String addCard(@RequestBody Card card){
+    public String addCard(Card card){
         try {
+            card.arrivalTime = new Timestamp(System.currentTimeMillis());
             repository.save(card);
             return "card added to the database";
         }catch (Exception exception){
@@ -35,9 +38,18 @@ public class Controller {
         }
     }
 
+    @GetMapping
     public List<Card> getCards(){
         try {
-            List<Card> result = repository.findAll();
+            ArrayList<Card> result = (ArrayList<Card>) repository.findAll();
+
+            /*list.sort((o1, o2)
+                    -> o1.getCustomProperty().compareTo(
+                    o2.getCustomProperty()))*/
+
+            result.sort((o1,o2)-> o1.getPriority().compareTo(o2.getPriority()));
+            result.sort((o1,o2)->o1.getArrivalTime().compareTo(o2.getArrivalTime()));
+
             return result;
         }catch (Exception exception){
             return new ArrayList<Card>();
