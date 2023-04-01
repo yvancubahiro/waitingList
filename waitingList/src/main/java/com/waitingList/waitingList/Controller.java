@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Timestamp;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("card")
 public class Controller {
@@ -18,7 +18,7 @@ public class Controller {
     }
 
     @PostMapping
-    public String addCard(Card card){
+    public String addCard( @RequestBody Card card){
         try {
             card.arrivalTime = new Timestamp(System.currentTimeMillis());
             repository.save(card);
