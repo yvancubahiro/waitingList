@@ -1,9 +1,23 @@
-
-
-
-<div class="container">
+<div class="container-fill bg-dark">
   <div class="row">
-    <div class="row col-8" >
+    <div class="col-8">
+      <h2 style="color:white;font-weight: bold;padding-left: 0.5cm;padding-bottom: 0.25cm;padding-top: 0.25cm;">Waiting List</h2>
+    </div>
+    <div class="col-2" style="padding-top: 0.5cm;">
+      <input type="text" [(ngModel)]="password_input" placeholder="password">
+    </div>
+    <div class="col-2" style="padding-top: 0.4cm;">
+      <button *ngIf="isAdmin == false" type="button" class="btn btn-primary" (click)="login()" (keydown.enter)="login()" >Login</button>
+      <button *ngIf="isAdmin == true" type="button" class="btn btn-danger" (click)="signout()" (keydown.enter)="signout()" >sign out</button>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="container">
+
+  <div class="row">
+    <div class="row col-8">
       <tbody>
         <tr *ngFor="let card of cards">
           <app-card [card]="card" [isAdmin]="isAdmin"></app-card>
@@ -11,11 +25,11 @@
         </tr>
       </tbody>
     </div>
-    <div class="col-4">
+    <div class="col-4" *ngIf="isAdmin">
       
 
 
-  <div class="form-row">
+  <div class="form-row" >
     <div class="form-group col-md-6">
       <label for="firstname">First name</label>
       <input type="text" class="form-control" id="firstname" [(ngModel)] = "firstname" placeholder="first name">
@@ -38,10 +52,8 @@
   <div>
     <span style="color:red;">{{message}}</span>
   </div>
+  <br>
     <button type="button" class="btn btn-success" (click)="addCard()">Add</button>
-
-
-
     </div>
   </div>
 </div>

@@ -11,14 +11,19 @@ export class CardComponent {
 
   @Input() card!: Card;
   @Input() isAdmin! : Boolean;
+  time!: Date;
+  display_arrivalTime!: String;
 
   constructor(private service: ServiceService){}
 
   ngOnInit(){
+    this.time = new Date(this.card.arrivalTime);
+    this.display_arrivalTime = this.time.getHours()+":"+this.time.getMinutes()+":"+this.time.getSeconds()+"";
   }
+  
 
   delete(){
-    this.service.deleteCard(this.card);
-    console.log(this.card.id+" deleted");
+    this.service.deleteCard(this.card).subscribe(data=>{console.log(data)});
+    window.location.reload();
   }
 }

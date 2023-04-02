@@ -20,7 +20,7 @@ public class Card {
     String lastname;
     String illness;
     Integer priority;
-    Timestamp arrivalTime;
+    Long arrivalTime;
 
     // default constructor
     public Card(){}
@@ -71,7 +71,7 @@ public class Card {
         this.priority = priority;
     }
 
-    public Timestamp getArrivalTime() {
+    public Long getArrivalTime() {
         return arrivalTime;
     }
 }

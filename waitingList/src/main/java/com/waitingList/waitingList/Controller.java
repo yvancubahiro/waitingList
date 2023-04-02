@@ -20,7 +20,7 @@ public class Controller {
     @PostMapping
     public String addCard( @RequestBody Card card){
         try {
-            card.arrivalTime = new Timestamp(System.currentTimeMillis());
+            card.arrivalTime = System.currentTimeMillis();
             repository.save(card);
             return "card added to the database";
         }catch (Exception exception){
