@@ -43,12 +43,6 @@ public class Controller {
         try {
             ArrayList<Card> result = (ArrayList<Card>) repository.findAll();
 
-            /*list.sort((o1, o2)
-                    -> o1.getCustomProperty().compareTo(
-                    o2.getCustomProperty()))*/
-
-            result.sort((o1,o2)-> o1.getArrivalTime().compareTo(o2.getArrivalTime()));
-
             return result;
         }catch (Exception exception){
             return new ArrayList<Card>();

@@ -70,7 +70,7 @@ export class AppComponent {
   }
 
   signout(){
-    if(this.isAdmin){
+    if(this.isAdmin || document.cookie == "true"){
       this.isAdmin = false;
       document.cookie = "false";
     }else{
