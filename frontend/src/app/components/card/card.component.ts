@@ -18,7 +18,7 @@ export class CardComponent {
 
   ngOnInit(){
     this.time = new Date(this.card.arrivalTime);
-    this.display_arrivalTime = this.time.getHours()+":"+this.time.getMinutes()+":"+this.time.getSeconds()+"";
+    this.display_arrivalTime = this.time.getHours()+" h "+this.time.getMinutes()+" min "+this.time.getSeconds()+" sec ";
   }
   
 

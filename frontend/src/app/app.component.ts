@@ -78,4 +78,12 @@ export class AppComponent {
     }
   }
 
+  executeEnter(){
+    if(this.isAdmin){
+      this.signout();
+    }else{
+      this.login();
+    }
+  }
+
 }
