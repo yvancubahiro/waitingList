@@ -30,4 +30,9 @@ export class ServiceService {
     this.http.post<Card>(this.apiUrl,card,{headers: headers}).subscribe(data=>{console.log(data)});
     return id;
   }
+
+  sort(cards:Card[]){
+    cards.sort((a, b) => (a.priority > b.priority) ? 1 : -1);
+    return cards;
+  }
 }

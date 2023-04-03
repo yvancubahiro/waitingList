@@ -47,8 +47,7 @@ public class Controller {
                     -> o1.getCustomProperty().compareTo(
                     o2.getCustomProperty()))*/
 
-            result.sort((o1,o2)-> o1.getPriority().compareTo(o2.getPriority()));
-            result.sort((o1,o2)->o1.getArrivalTime().compareTo(o2.getArrivalTime()));
+            result.sort((o1,o2)-> o1.getArrivalTime().compareTo(o2.getArrivalTime()));
 
             return result;
         }catch (Exception exception){

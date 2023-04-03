@@ -31,7 +31,10 @@ export class AppComponent {
   }
 
   ngOnInit(): void{
-    this.service.getCards().subscribe((response)=>this.cards = response);
+    this.service.getCards().subscribe((response)=>{
+      
+      this.cards = this.service.sort(response);
+    });
     if(document.cookie == "true"){
       this.isAdmin = true;
     }else if(document.cookie == "false"){
