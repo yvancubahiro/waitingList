@@ -28,13 +28,20 @@ export class AppComponent {
     this.message = "";
     this.priority = 0;
     this.password_input = "";
+
   }
 
   ngOnInit(): void{
     this.service.getCards().subscribe((response)=>{
-      
-      this.cards = this.service.sort(response);
+      this.cards = response;
     });
+
+    if(this.cards.length == 0){
+
+    }else{
+
+    }
+
     if(document.cookie == "true"){
       this.isAdmin = true;
     }else if(document.cookie == "false"){

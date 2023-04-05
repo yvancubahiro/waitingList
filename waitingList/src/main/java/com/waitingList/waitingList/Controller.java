@@ -42,6 +42,7 @@ public class Controller {
     public List<Card> getCards(){
         try {
             ArrayList<Card> result = (ArrayList<Card>) repository.findAll();
+            //ArrayList<Card> result = (ArrayList<Card>) repository.getCards();
 
             return result;
         }catch (Exception exception){

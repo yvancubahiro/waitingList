@@ -20,10 +20,16 @@
     </div>
   </div>
 </div>
+<br>
 
 <br>
 <div class="container">
-
+  <div><i>NB: Priority is ascending (1 has higher priority than 2)</i></div>
+  <br>
+  <div *ngIf="cards.length == 0">
+    
+    <h2 class="display-6">There is no waiting patient</h2>
+  </div>
   <div class="row">
     <div class="row col-8">
       <ul style="list-style-type: none;">
@@ -40,21 +46,21 @@
   <div class="form-row" >
     <div class="form-group col-md-6">
       <label for="firstname">First name</label>
-      <input type="text" class="form-control" id="firstname" [(ngModel)] = "firstname" placeholder="first name">
+      <input type="text" class="form-control" id="firstname" [(ngModel)] = "firstname" placeholder="first name" (keydown.enter)="addCard()">
     </div>
     <div class="form-group col-md-6">
       <label for="lastname">Last name</label>
-      <input type="text" class="form-control" id="lastname" [(ngModel)] = "lastname" placeholder="last name">
+      <input type="text" class="form-control" id="lastname" [(ngModel)] = "lastname" placeholder="last name" (keydown.enter)="addCard()">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="illness">Illness</label>
-      <input type="text" class="form-control" id="illness" [(ngModel)] = "illness" placeholder="illness">
+      <input type="text" class="form-control" id="illness" [(ngModel)] = "illness" placeholder="illness" (keydown.enter)="addCard()">
     </div>
     <div class="form-group col-md-6">
       <label for="priority">priority</label>
-      <input type="number" class="form-control" id="priority" [(ngModel)] = "priority" placeholder="priority">
+      <input type="number" class="form-control" id="priority" [(ngModel)] = "priority" placeholder="priority" (keydown.enter)="addCard()">
     </div>
   </div>
   <div>
