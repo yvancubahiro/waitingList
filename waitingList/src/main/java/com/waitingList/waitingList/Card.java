@@ -53,6 +53,12 @@ public class Card {
         return priority;
     }
 
+    public void increasePriority(){
+        if(priority >= 1) {
+            this.priority--;
+        }
+    }
+
 
 
     public void setFirstname(String firstname) {

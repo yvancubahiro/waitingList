@@ -32,19 +32,36 @@ public class Controller {
     public String deleteCard(@RequestParam Long id){
         try{
             repository.deleteById(id);
+
+            updatePriorities();
+
             return "Card deleted";
         }catch (Exception exception){
             return exception.getMessage();
         }
     }
 
+    private void updatePriorities() {
+        if(repository.count() != 0){
+            List<Card> cards = repository.findAll();
+            for(Card card : cards){
+                card.increasePriority();
+            }
+            repository.saveAll(cards);
+        }
+
+    }
+
     @GetMapping
     public List<Card> getCards(){
         try {
-            ArrayList<Card> result = (ArrayList<Card>) repository.findAll();
-            //ArrayList<Card> result = (ArrayList<Card>) repository.getCards();
-
-            return result;
+            ArrayList cards;
+            if(repository.count() > 1) {
+                cards = (ArrayList<Card>) repository.findSorted();
+            }else{
+                cards = (ArrayList<Card>) repository.findAll();
+            }
+            return cards;
         }catch (Exception exception){
             return new ArrayList<Card>();
         }
